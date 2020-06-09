@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>doodle classifier</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.10.0"></script>	<script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
+  <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
+	<script src="bytesLoader.js"></script>
+	<script src="model.js"></script>
+	<script src="dataprep.js"></script>
+	<script src="sketch.js"></script>
+	<script src="dataObject.js"></script>
+	<style>
+	body {
+		background-color: #AAA;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		height:100vh;
+	}
+	div{
+		width:100vw;
+		padding:1em;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	#sketch-holder{
+		width:100vw;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	button{
+		margin-left:1em;
+	}
+	h3{
+		text-align:center;
+	}
+	</style>
+</head>
+<body>
+	<h3>Can a neural network learn to recognize doodling?</h3>
+	<div id="sketch-holder">
+		<!-- Our sketch will go here! -->
+	  </div>
+	<div>
+		<button class="btn btn-primary" id="guess">Guess</button>
+		<button  class="btn btn-success" id="generate">Generate</button>
+		<button  class="btn btn-warning" id="clear">Clear</button>
+	</div>
+	<span id="output" class="alert alert-success" role="alert">🎉🎉Draw and Guess🎉🎉</span>
+</body>
+
+</html>
