@@ -1,5 +1,5 @@
 ### Doodle Classifier using TensorflowJS
 
-<img align="left" alt="HTML5" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png" />
-<img align="left" alt="HTML5" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png" />
-<img align="left" alt="HTML5" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png" />
+<img align="center" alt="bird" width="300px" src="https://github.com/harishsambasivam/doodleclassifier/blob/master/assets/bird.png" />
+<img align="center" alt="flower" width="300px" src="https://github.com/harishsambasivam/doodleclassifier/blob/master/assets/flower.png" />
+<img align="center" alt="cat" width="300px" src="https://github.com/harishsambasivam/doodleclassifier/blob/master/assets/cat.png" />
