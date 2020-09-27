@@ -1,4 +1,8 @@
+const numberOfEachDoodle = 1000;
+const doodleLabelList = ["flower", "cat", "bird"];
+
 function prepareData(data, labels) {
+  console.log(data, labels);
   let doodles = [];
   let labelsData = [];
   let returnedTensors = [];
@@ -9,16 +13,14 @@ function prepareData(data, labels) {
       pixels[j] = data[i][j] / 255;
     }
     doodles[i] = pixels;
-
     let doodleIndex = doodleLabelList.indexOf(labels[i]);
-
     labelsData[i] = doodleIndex;
   }
+
   xs = tf.tensor2d(doodles);
   let labelsTensor = tf.tensor1d(labelsData, "int32");
   ys = tf.oneHot(labelsTensor, doodleLabelList.length).cast("float32");
   labelsTensor.dispose();
-
   returnedTensors[0] = xs;
   returnedTensors[1] = ys;
   return returnedTensors;
@@ -35,18 +37,12 @@ function initializeData() {
 
   for (let i = 0; i < dataObjectsArray.length; i++) {
     training_labels = training_labels.concat(
-      dataObjectsArray[i].getTrainingLabels()
+      dataObjectsArray[i].trainingLabels
     );
-
-    testing_labels = testing_labels.concat(
-      dataObjectsArray[i].getTestingLabels()
-    );
-
-    training_data = training_data.concat(dataObjectsArray[i].getTrainingData());
-
-    testing_data = testing_data.concat(dataObjectsArray[i].getTestingData());
+    testing_labels = testing_labels.concat(dataObjectsArray[i].trainingLabels);
+    training_data = training_data.concat(dataObjectsArray[i].trainingData);
+    testing_data = testing_data.concat(dataObjectsArray[i].testingData);
   }
-  // Log progress
 
   console.log("Done");
 }
