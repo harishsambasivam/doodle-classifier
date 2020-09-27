@@ -13,6 +13,8 @@ ys = {};
 testing_xs = {};
 testing_ys = {};
 
+const numberOfEachDoodle = 1000;
+const data_proportion = 0.8;
 function preload() {
   console.log("Preloading data");
   let filename;
@@ -50,16 +52,28 @@ async function setup() {
   // Log progress
   console.log("Done");
 
-  // Log progress
-  console.log("Training model");
+  let trainButton = select("#train");
+  let trainingAlert = document.getElementById("training-alert");
+  trainingAlert.style.display = "none";
 
-  // Let's train the model (this .then(() => thingy is an application of the
-  // new ES6 functionnality combined with the js promises).
-  train().then(async () => {
+  trainButton.mousePressed(
     // Log progress
-    console.log("Done");
-    // const saveResult = await model.save("indexeddb://my-model");
-  });
+    () => {
+      trainingAlert.style.display = "inline";
+
+      console.log("Training model");
+
+      // Let's train the model (this .then(() => thingy is an application of the
+      // new ES6 functionnality combined with the js promises).
+      train(trainingAlert).then(async () => {
+        // Log progress
+        console.log("Done");
+        trainingAlert.style.display = "none";
+        trainingAlert.className = "btn btn-disabled";
+        // const saveResult = await model.save("indexeddb://my-model");
+      });
+    }
+  );
 
   // const model =  await tf.loadModel('indexeddb://my-model');
 
@@ -74,7 +88,7 @@ async function setup() {
     // Convert black in white drawings to white in black drawings(training doodles are white on black)
     for (let i = 0; i < dataLength; i++) {
       let alpha = img.pixels[i * 4];
-      // normalize the pixels 
+      // normalize the pixels
       inputs[i] = alpha / 255.0;
     }
     // We need to create a 2D array with this pixel because the model has been

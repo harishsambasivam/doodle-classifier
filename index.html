@@ -15,14 +15,19 @@
   </head>
   <body>
     <h3>Can a neural network learn to recognize doodling?</h3>
+
     <div id="canvas">
       <!-- Our sketch will go here! -->
     </div>
     <div>
+      <button class="btn btn-success" id="train">Train</button>
       <button class="btn btn-primary" id="guess">Guess</button>
       <button class="btn btn-success" id="generate">Generate</button>
       <button class="btn btn-warning" id="clear">Clear</button>
     </div>
+    <span class="alert alert-primary" id="training-alert" role="alert"
+      >Training...</span
+    >
     <span id="output" class="alert alert-success" role="alert"
       >🎉🎉Draw and Guess🎉🎉</span
     >

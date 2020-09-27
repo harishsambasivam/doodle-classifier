@@ -9,6 +9,7 @@ class DataObject {
     this.data_proportion = 0.8;
     this.numberOfEachDoodle = 1000;
     this.bytesArrayLength = 784;
+    this.numberOfDoodles = 1000;
   }
 
   get trainingData() {
@@ -48,12 +49,12 @@ class DataObject {
   }
 
   splitData() {
+    console.log(this.numberOfDoodles);
     for (let i = 0; i < this.numberOfDoodles; i++) {
       // keeping track of index
       let offset = i * this.bytesArrayLength;
       // threshold for test/train data split
       let threshold = floor(this.data_proportion * this.numberOfDoodles);
-
       if (i < threshold) {
         // 1 - 800
         this.trainingData[i] = this.totalData.subarray(

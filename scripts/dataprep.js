@@ -27,7 +27,6 @@ function prepareData(data, labels) {
     let doodleIndex = doodleLabelList.indexOf(labels[i]);
     labelsData[i] = doodleIndex;
   }
-
   xs = tf.tensor2d(doodles);
   let labelsTensor = tf.tensor1d(labelsData, "int32");
   ys = tf.oneHot(labelsTensor, doodleLabelList.length).cast("float32");
@@ -50,9 +49,12 @@ function initializeData() {
     training_labels = training_labels.concat(
       dataObjectsArray[i].trainingLabels
     );
-    testing_labels = testing_labels.concat(dataObjectsArray[i].trainingLabels);
+    testing_labels = testing_labels.concat(dataObjectsArray[i].testingLabels);
+
     training_data = training_data.concat(dataObjectsArray[i].trainingData);
+
     testing_data = testing_data.concat(dataObjectsArray[i].testingData);
+    console.log(training_data, training_labels);
   }
 
   console.log("Done");
