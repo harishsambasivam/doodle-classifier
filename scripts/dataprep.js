@@ -1,8 +1,19 @@
-const numberOfEachDoodle = 1000;
 const doodleLabelList = ["flower", "cat", "bird"];
+// 28x28 images = 784 pixels.
+
+// Data arrays
+
+// train split
+let training_data = [];
+let training_labels = [];
+
+// test split
+let testing_data = [];
+let testing_labels = [];
+
+const dataLength = 784;
 
 function prepareData(data, labels) {
-  console.log(data, labels);
   let doodles = [];
   let labelsData = [];
   let returnedTensors = [];
@@ -28,9 +39,9 @@ function prepareData(data, labels) {
 
 function initializeData() {
   console.log("Initializing data");
-
   for (let i = 0; i < doodleLabelList.length; i++) {
-    dataObjectsArray[i] = new dataObject(doodleLabelList[i]);
+    let label = doodleLabelList[i];
+    dataObjectsArray[i] = new DataObject(label);
     dataObjectsArray[i].loadBytesData();
     dataObjectsArray[i].splitData();
   }

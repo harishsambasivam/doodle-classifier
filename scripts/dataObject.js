@@ -1,4 +1,4 @@
-class dataObject {
+class DataObject {
   constructor(label) {
     this.label = label;
     this.totalData = [];
@@ -7,6 +7,8 @@ class dataObject {
     this.trainingLabels = [];
     this.testingLabels = [];
     this.data_proportion = 0.8;
+    this.numberOfEachDoodle = 1000;
+    this.bytesArrayLength = 784;
   }
 
   get trainingData() {
@@ -41,23 +43,29 @@ class dataObject {
   loadBytesData() {
     let index = doodleLabelList.indexOf(this.label);
     let bytesObject = dataPreload[index];
+    // bytesObject.bytes is the actual bytes array
     this.totalData = bytesObject.bytes;
   }
 
   splitData() {
-    for (let i = 0; i < numberOfEachDoodle; i++) {
-      let offset = i * dataLength;
-      let threshold = floor(this.data_proportion * numberOfEachDoodle);
+    for (let i = 0; i < this.numberOfDoodles; i++) {
+      // keeping track of index
+      let offset = i * this.bytesArrayLength;
+      // threshold for test/train data split
+      let threshold = floor(this.data_proportion * this.numberOfDoodles);
+
       if (i < threshold) {
+        // 1 - 800
         this.trainingData[i] = this.totalData.subarray(
           offset,
-          offset + dataLength
+          offset + this.bytesArrayLength
         );
         this.trainingLabels[i] = this.label;
       } else {
+        // 1 - 200
         this.testingData[i - threshold] = this.totalData.subarray(
           offset,
-          offset + dataLength
+          offset + this.bytesArrayLength
         );
         this.testingLabels[i - threshold] = this.label;
       }

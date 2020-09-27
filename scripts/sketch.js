@@ -1,12 +1,3 @@
-// 28x28 images = 784 pixels.
-let dataLength = 784;
-
-// Data arrays
-let training_data = [];
-let testing_data = [];
-let training_labels = [];
-let testing_labels = [];
-
 // Contains all the data objects
 let dataObjectsArray = [];
 
@@ -83,7 +74,7 @@ async function setup() {
     // Convert black in white drawings to white in black drawings(training doodles are white on black)
     for (let i = 0; i < dataLength; i++) {
       let alpha = img.pixels[i * 4];
-      // normalize the pixels
+      // normalize the pixels 
       inputs[i] = alpha / 255.0;
     }
     // We need to create a 2D array with this pixel because the model has been

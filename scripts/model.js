@@ -49,7 +49,7 @@ async function train() {
   const training_DoShuffle = true;
   const training_ValidationSplit = 0.2;
   const training_BatchSize = 16;
-  const training_NumEpochs = 50;
+  const training_NumEpochs = 0;
   await model.fit(xs, ys, {
     shuffle: training_DoShuffle,
     validationSplit: training_ValidationSplit,
