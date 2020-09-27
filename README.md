@@ -1,6 +1,7 @@
-<<<<<<< HEAD
-=======
-## Doodle Classifier using TensorflowJS
+
+## Doodle Classifier using TensorflowJS 
+
+-[x] [Quick Draw! The Data](https://quickdraw.withgoogle.com/data)
 
 #### ⚡ Can a Neural Network learn to recognize doodling directly in the browser? 
 
